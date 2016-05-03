@@ -1,9 +1,9 @@
 module Responders
   class Introduction < ApplicationResponder
-    respond_to "start-chatting"
+    respond_to "start-chatting", "text"
 
     def can_handle?
-      responses.empty?()
+      responses.empty?() ? message["type"] == "start-chatting" : responses[0]["body"] == "Resetting..."
     end
 
     def handle
