@@ -23,7 +23,39 @@ module Responders
         "I won."
       ]
 
-      final_response = computer_preface + computer_responses[result]
+      if result == 1
+        user.win_total += 1
+      elsif result == 2
+        user.loss_total += 1
+      end
+
+      user.save!
+
+      win_record = case user.win_total
+      when 0
+        "never won"
+      when 1
+        "won once"
+      when 2
+        "won twice"
+      else
+        "won #{user.win_total} times"
+      end
+
+      loss_record = case user.loss_total
+      when 0
+        "never lost"
+      when 1
+        "lost once"
+      when 2
+        "lost twice"
+      else
+        "lost #{user.loss_total} times"
+      end
+
+      winloss_record = " So far, you have #{win_record} and #{loss_record}."
+
+      final_response = computer_preface + computer_responses[result] + winloss_record
 
       reexecute_with(text_response(final_response))
     end
