@@ -15,13 +15,13 @@ module Responders
 
       result = (player_move - computer_move) % 3
 
-      responses = [
+      computer_responses = [
         "I played #{computer_move_text} and we tied.",
         "I played #{computer_move_text} and you won.",
         "I played #{computer_move_text} and I won."
       ]
 
-      reexecute_with(text_response(responses[result]))
+      reexecute_with(text_response(computer_responses[result]))
     end
 
   end

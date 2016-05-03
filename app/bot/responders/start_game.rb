@@ -1,6 +1,6 @@
 module Responders
   class StartGame < ApplicationResponder
-    respond_to "text"
+    respond_to "text", "start-chatting"
 
     def can_handle?
       true
