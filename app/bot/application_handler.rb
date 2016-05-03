@@ -1,4 +1,6 @@
 class ApplicationHandler < Bot::Handler
+  use Responders::PlayGame
+  use Responders::StartGame
   use Responders::Default
 
   # def user_for(message)
