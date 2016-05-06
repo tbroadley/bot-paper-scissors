@@ -11,16 +11,16 @@ module Responders
 
       player_move = rps.index(message['body'])
       computer_move = rand(3)
-      computer_move_text = rps[computer_move]
+
+      player_move_text = "You play #{message["body"]}."
+      computer_move_text = "I play #{rps[computer_move]}#{player_move == computer_move ? " too" : ""}."
 
       result = (player_move - computer_move) % 3
 
-      computer_preface = "I played #{computer_move_text} and "
-
-      computer_responses = [
-        "we tied.",
-        "you won.",
-        "I won."
+      results_text = [
+        "We tie!",
+        "You win!",
+        "I win!"
       ]
 
       if result == 1
@@ -32,9 +32,11 @@ module Responders
 
       winloss_record = " So far, your win-loss record is #{user.win_total}-#{user.loss_total}."
 
-      final_response = computer_preface + computer_responses[result] + winloss_record
-
-      reexecute_with(text_response(final_response))
+      reexecute_with([
+        "#{player_move_text} #{computer_move_text}",
+        results_text[result],
+        winloss_record
+      ].map { |msg| text_response(msg) })
     end
 
   end
