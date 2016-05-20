@@ -1,4 +1,4 @@
-module Responders
+  module Responders
   class Default < ApplicationResponder
     respond_to "scan-data", "text", "link", "picture", "video", "sticker"
 
@@ -7,7 +7,10 @@ module Responders
     end
 
     def handle
-      text_response('Sorry, I don\'t know how to reply to that.')
+      [
+        text_response('That wasn\'t Rock, Paper, nor Scissors!'),
+        text_response('What do you play?', ['Rock', 'Paper', 'Scissors'])
+      ]
     end
 
   end

@@ -7,7 +7,7 @@ module Responders
     end
 
     def handle
-      reexecute_with(text_response("Hi, I'm Bot Paper Scissors. Play RPS with me!"))
+      reexecute_with(text_response("Hi, I'm Bot Paper Scissors. Let's play Rock Paper Scissors!"))
     end
 
   end

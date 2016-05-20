@@ -33,8 +33,7 @@ module Responders
       winloss_record = " So far, your win-loss record is #{user.win_total}-#{user.loss_total}."
 
       reexecute_with([
-        "#{player_move_text} #{computer_move_text}",
-        results_text[result],
+        "#{player_move_text} #{computer_move_text} #{results_text[result]}",
         winloss_record
       ].map { |msg| text_response(msg) })
     end
