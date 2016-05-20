@@ -7,6 +7,7 @@ module Responders
     end
 
     def handle
+      MIXPANEL.track(user.username, 'Game Result')
       rps = ['Rock', 'Paper', 'Scissors']
 
       player_move = rps.index(message['body'])

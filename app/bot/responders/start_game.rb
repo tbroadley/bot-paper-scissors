@@ -7,6 +7,7 @@ module Responders
     end
 
     def handle
+      MIXPANEL.track(user.username, 'Game Started')
       text_response('What do you play?', ['Rock', 'Paper', 'Scissors'])
     end
 

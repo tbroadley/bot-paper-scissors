@@ -7,6 +7,7 @@ module Responders
     end
 
     def handle
+      MIXPANEL.track(user.username, 'Introduced')
       reexecute_with(text_response("Hi, I'm Bot Paper Scissors. Let's play Rock Paper Scissors!"))
     end
 
